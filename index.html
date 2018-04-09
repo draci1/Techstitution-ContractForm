@@ -10,7 +10,7 @@
     <script type="text/javascript" src="js/money/src/jquery.maskMoney.js"></script>
     <script type="text/javascript">
         $(function () {
-            var inputmask = new Inputmask("###-##-####-#-#-#");
+            var inputmask = new Inputmask("###-##-###-#-#-#");
             inputmask.mask($('[id*=procuremend_number]'));
 
         });
@@ -24,7 +24,7 @@
             inputmask.mask($('[id*=conclusion_date]'));
         });
 
-        <!-- Credit: http://plentz.github.io/jquery-maskmoney/ -->
+            <!--Credit: http://plentz.github.io/jquery-maskmoney/ -->
         $(function () {
             $('#price').maskMoney({ thousands: '', decimal: '.', allowZero: true, suffix: ' €' });;
             $('#total_price').maskMoney({ thousands: '', decimal: '.', allowZero: true, suffix: ' €' });;
@@ -48,13 +48,34 @@
                         <div class="row">
                             <div class="col-md-5">
                                 <label for="procuremend_number">Nr. rendor i prokurimit</label>
-                                <input class="form-control" id="procuremend_number" name="procurement_number" type="text" placeholder="Nr. rendor i prokurimit" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"  />
+                                <input class="form-control" id="procuremend_number" name="procurement_number" type="text" placeholder="Nr. rendor i prokurimit" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" />
                             </div>
 
                             <div class="col-md-5">
                                 <label for="procuremend_type">Lloji i prokurimit</label>
                                 <div class="d-none d-sm-none d-md-block d-lg-none"><br /></div>
-                                <input class="form-control" id="procuremend_type" name="procurement_type" type="text" placeholder="Lloji i prokurimit" />
+                                <select class="form-control" id="procuremend_type" name="procurement_type" type="text" />
+                                <option name="null" selected="selected">Lloji i prokurimit</option>
+                                    <optgroup label="Punë">
+                                        <option value="pune_egzekutim">Ekzekutim</option>
+                                        <option value="pune_planegzekutim">Plani dhe ekzekutimi</option>
+                                        <option value="pune_realizim">
+                                            Realizimi, në çfarëdo
+                                            mënyre, të punës, përgjegjës
+                                            me kërkesa
+                                        </option>
+                                    </optgroup>
+                                <optgroup label="Furnizime">
+                                    <option value="furnizime_blerje">Blejra</option>
+                                    <option value="furnizime_lizing">Qira Financiare (Lizing)</option>
+                                    <option value="furnizime_qira">Qira</option>
+                                    <option value="furnizime_blerjekeste">Blerje me këste</option>
+                                    <option value="furnizime_combo">Një kombinim i këtyre</option>
+                                </optgroup>
+                                <optgroup label="Sherbime">
+                                    <option value="sherbime_sherbime">Shërbime</option>
+                                </optgroup>
+                                </select>
                             </div>
                         </div>
                         <br />
@@ -92,7 +113,7 @@
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="d-md-none d-lg-none d-xl-none"><label>(Prej)</label></div>
-                                <input class="form-control" id="imp_deadline_start" name="imp_deadline_start" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" >
+                                <input class="form-control" id="imp_deadline_start" name="imp_deadline_start" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')">
                             </div>
                             <div class="col-md-5">
                                 <div class="d-md-none d-lg-none d-xl-none"><label>(Deri)</label></div>
@@ -135,6 +156,7 @@
                                 <div class="col-md-5">
                                     <input class="btn btn-primary btn-block" type="submit" value="Dërgo" />
                                 </div>
+                                <div class="d-none d-sm-block d-md-block d-lg-none d-xl-block"><br /></div>
                                 <div class="col-md-5">
                                     <button class="btn btn-secondary btn-block" type="button" onclick="ClearAll()">Fshij</button>
                                 </div>
@@ -180,6 +202,8 @@
                 document.getElementById("price").value =
                 document.getElementById("total_price").value =
                 document.getElementById("contractor_name").value = "";
+            document.getElementById("procuremend_type").value = "Lloji i prokurimit";
+            
         }
     </script>
 </body>
