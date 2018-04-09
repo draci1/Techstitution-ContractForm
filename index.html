@@ -1,10 +1,117 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
-  <head>
-      <title>Contract Form</title>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  </head>
-  <body>
-    
-  </body>
+<meta charset="UTF-8">
+<head>
+<title>Contract Form</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+<style>
+.title {
+	color: #007bff;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-md-7 offset-md-3 column">
+      <h1 class="title">Shto kontrate te re</h1>
+      <br />
+      <form>
+        <div class="form-group">
+          <h2>Prokurimi: </h2>
+          <div class="row">
+            <div class="col-md-5">
+              <label for="procuremend_number">Nr. rendor i prokurimit</label>
+              <input class="form-control" id="procuremend_number" type="text" />
+            </div>
+            <div class="col-md-5">
+                <label for="procuremend_type">Lloji i prokurimit</label>
+                <div class="d-none d-sm-none d-md-block d-lg-none"><br /></div>
+                <input class="form-control" id="procuremend_type" type="text" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10">
+              <label for="procuremend_activity">Aktiviteti i prokurimit</label>
+              <input class="form-control" id="procuremend_activity" type="text" />
+            </div>
+          </div>
+			
+        </div>
+        <br>
+        <div class="form-group">
+          <h2>Datat: </h2>
+          <div class="row">
+            <div class="col-md-5">
+              <label for="date_start">Data e inicimit te aktivitetit te prokurimit</label>
+              <input class="form-control" id="date_start" type="text" />
+            </div>
+            <div class="col-md-5">
+                <label for="date_publication">Data e publikimit te shpalljes</label>
+                <div class="d-none d-sm-block d-md-block d-lg-block d-xl-block"><br /></div>
+                <input class="form-control" id="date_publication" type="text" />
+            </div>
+          </div>
+          <div class="row">
+			  <div class="col-md-10">
+				  <label for="date_signed">Data e nenshkrimit te kontrates</label>
+				  <input class="form-control" id="date_signed" type="text">
+			  </div>
+			</div>
+				<label for="imp_deadline_start">Afati per implementimin e kontrates</label>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="d-md-none d-lg-none d-xl-none"><label>(Prej)</label></div>
+                    <input class="form-control" id="imp_deadline_start" type="text">
+                </div>
+                <div class="col-md-5">
+                    <div class="d-md-none d-lg-none d-xl-none"><label>(Deri)</label></div>
+                    <input class="form-control" id="imp_deadline_end" type="text">
+                </div>
+
+            </div>
+			<div class="row" >
+				<div class="col-md-10">
+					<label for="conclusion_date">Data e permbylles se kontrates (data e pranimit te perkohshem / preliminar)</label>
+					<input class="form-control" id="conclusion_date" type="text">
+				</div>
+			</div>
+        </div>
+		  <div class="form-group">
+              <h2>Cmimi dhe te dhenat tjera</h2>
+			  <div class="row">
+                  <div class="col-md-5">
+                      <label for="price">Cmimi i kontrates (duke perfshire te gjitha taksat)</label>
+                      <input class="form-control" id="price" type="text" />
+                  </div>
+                  <div class="col-md-5">
+                      <label for="total_price">Cmimi total i paguar per kontraten</label>
+                      <div class="d-none d-sm-block d-md-block d-lg-none d-xl-block"><br /></div>
+                      <input class="form-control" id="total_price" type="text" />
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-10">
+                      <label for="contractor_name">Emri i te cilit i eshte dhene kontrata</label>
+                      <input class="form-control" id="contract_name" type="text" />
+                  </div>
+              </div>
+              <br />
+              <div class="form-group">
+                  <div class="row">
+                      <div class="col-md-5">
+                          <input class="btn btn-primary btn-block" type="submit" value="Dergo" />
+                      </div>
+                      <div class="col-md-5">
+                          <button class="btn btn-secondary btn-block" type="button" >Fshij</button>
+                      </div>
+                  </div>
+              </div>
+		  </div>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
 </html>

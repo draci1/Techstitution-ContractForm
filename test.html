@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js">
+    </script>
+  </head>
+  <body>
+    <input type="text" class="creditCardText" />
+    <script type="text/javascript">
+    $('.creditCardText').keyup(function() {
+  var foo = $(this).val().split("-").join(""); // remove hyphens
+  if (foo.length > 0) {
+    foo = foo.match(new RegExp('.{1,4}', 'g')).join("-");
+  }
+  $(this).val(foo);
+});
+    </script>
+  </body>
+</html>
+
+
+
+<script type="text/javascript">
+$('.form-control').keyup(function() {
+  var n = document.getElementById('procuremend_number').innerHTML;
+  document.write(n.replace(/(\d{3})(\d{2})(\d{3})/, "$1-$2-$3"));
+  document.getElementById('procuremend_number').innerHTML=n;
+  return false;
+});
+</script>
