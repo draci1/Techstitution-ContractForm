@@ -1,0 +1,68 @@
+<head>
+    <title>Prishtina Online</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/inputmask/inputmask.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/inputmask/inputmask.extensions.min.js"></script>
+    <script type="text/javascript" src="js/money/src/jquery.maskMoney.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var inputmask = new Inputmask("###-##-###-#-#-#");
+            inputmask.mask($('[id*=procuremend_number]'));
+
+        });
+        $(function () {
+            var inputmask = new Inputmask("##.##.####");
+            inputmask.mask($('[id*=date_start]'));
+            inputmask.mask($('[id*=date_publication]'));
+            inputmask.mask($('[id*=date_signed]'));
+            inputmask.mask($('[id*=imp_deadline_start]'));
+            inputmask.mask($('[id*=imp_deadline_end]'));
+            inputmask.mask($('[id*=conclusion_date]'));
+        });
+
+                                 // Credit: http://plentz.github.io/jquery-maskmoney/
+        $(function () {
+            $('#price').maskMoney({ thousands: '', decimal: '.', allowZero: true, suffix: ' €' });;
+            $('#total_price').maskMoney({ thousands: '', decimal: '.', allowZero: true, suffix: ' €' });;
+        })
+        $(function () {
+            var requiredCheckboxes = $(':checkbox[required]');
+            requiredCheckboxes.change(function () {
+                if (requiredCheckboxes.is(':checked')) {
+                    requiredCheckboxes.removeAttr('required');
+                } else {
+                    requiredCheckboxes.attr('required', 'required');
+                }
+            });
+        });
+
+    </script>
+    <style>
+        .title {
+            color: #007bff;
+        }
+        #register_form { display: none; }
+        .left-panel {
+            background-color: #32A6BD ;
+            padding:0%;
+            text-align: center;
+            }
+        .left-panel-title {
+            background-color: #152642;
+            padding:3%;
+            }
+        .left-panel-title > h1 {
+            font-size: calc(0.5vw + 20px);
+        }
+        .text-light > h3 > a{
+            color: #ffffff;
+        }
+    </style>
+</head>

@@ -1,59 +1,21 @@
-﻿<!DOCTYPE html>
-<html meta charset="UTF-8">
-<head>
-    <title>Contract Form</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/inputmask/inputmask.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/inputmask/inputmask.extensions.min.js"></script>
-    <script type="text/javascript" src="js/money/src/jquery.maskMoney.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            var inputmask = new Inputmask("###-##-###-#-#-#");
-            inputmask.mask($('[id*=procuremend_number]'));
-
-        });
-        $(function () {
-            var inputmask = new Inputmask("##.##.####");
-            inputmask.mask($('[id*=date_start]'));
-            inputmask.mask($('[id*=date_publication]'));
-            inputmask.mask($('[id*=date_signed]'));
-            inputmask.mask($('[id*=imp_deadline_start]'));
-            inputmask.mask($('[id*=imp_deadline_end]'));
-            inputmask.mask($('[id*=conclusion_date]'));
-        });
-
-                                <!--Credit: http://plentz.github.io/jquery-maskmoney/ -->
-        $(function () {
-            $('#price').maskMoney({ thousands: '', decimal: '.', allowZero: true, suffix: ' €' });;
-            $('#total_price').maskMoney({ thousands: '', decimal: '.', allowZero: true, suffix: ' €' });;
-        })
-
-        <!-- Credit -->
-        $(function () {
-            
-            var requiredCheckboxes = $(':checkbox[required]');
-            requiredCheckboxes.change(function () {
-                if (requiredCheckboxes.is(':checked')) {
-                    requiredCheckboxes.removeAttr('required');
-                } else {
-                    requiredCheckboxes.attr('required', 'required');
-                }
-            });
-        });
-
-    </script>
-    <style>
-        .title {
-            color: #007bff;
-        }
-    </style>
-</head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-7 offset-md-3 column">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 left-panel h-100">
+            <div class="text-light">
+                <div class="row left-panel-title">
+                    <img src="img/logo-pr-white.svg" alt="prishtina emblem" />
+                    <h1>PRISHTINA ONLINE</h1>
+                </div>
+                    <h3><a href="#">SHTO</a></h3>
+                    <h3><a href="#">MODIFIKO</a></h3>
+                    <h3><a href="#">FSHIJ</a></h3>
+                    <h3><a href="#">ARKIVA</a></h3>
+            </div>
+        </div>
+        <div class="col-md-9 bg-light h-100" style="max-height:100%;overflow-y:auto;">
+            <div clas="row">
+                <div class="col-md-8 offset-md-2 column">
                 <h1 class="title">Shto kontratën e re</h1>
                 <br />
                 <form>
@@ -213,47 +175,77 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        var today = new Date();
-        var day = today.getDate();
-        var month = today.getMonth() + 1;
+        </div>
+    </div>
 
-        var year = today.getFullYear();
-        if (day < 10) {
-            day = '0' + day;
-        }
-        if (month < 10) {
-            month = '0' + month;
-        }
-        var today = day + '.' + month + '.' + year;
-        document.getElementById("date_start").placeholder =
-            document.getElementById("date_publication").placeholder =
-            document.getElementById("date_signed").placeholder =
-            document.getElementById("imp_deadline_start").placeholder =
-            document.getElementById("imp_deadline_end").placeholder =
-            document.getElementById("conclusion_date").placeholder = today;
-    </script>
-    <script type="text/javascript">
-        function ClearAll() {
-            document.getElementById("procuremend_number").value =
-                document.getElementById("procuremend_type").value =
-                document.getElementById("procuremend_activity").value =
-                document.getElementById("date_start").value =
-                document.getElementById("date_publication").value =
-                document.getElementById("date_signed").value =
-                document.getElementById("imp_deadline_start").value =
-                document.getElementById("imp_deadline_end").value =
-                document.getElementById("conclusion_date").value =
-                document.getElementById("price").value =
-                document.getElementById("total_price").value =
-                document.getElementById("contract_title").value =
-                document.getElementById("contractor_name").value = "";
-            document.getElementById("albanian").checked =
-                document.getElementById("english").checked =
-                document.getElementById("serbian").checked = false;
-            document.getElementById("procuremend_type").value = "Lloji i prokurimit";
+<script type="text/javascript">
+    $('#switch-forms .btn').on('click', function() {
+        $('#switch-forms .btn').removeClass('active');
+        $(this).addClass('active');
+    });
+    $('#login_click').on('click', function() {
+        $('#register_form').hide();
+        $('#login_form').show();
+    });
+    $('#register_click').on('click', function() {
+        $('#login_form').hide();
+        $('#register_form').show();
+    });
+</script>
+<script type="text/javascript">
+    $('#switch-forms .btn').on('click', function() {
+        $('#switch-forms .btn').removeClass('active');
+        $(this).addClass('active');
+    });
+    $('#login_click').on('click', function() {
+        $('#register_form').hide();
+        $('#login_form').show();
+    });
+    $('#register_click').on('click', function() {
+        $('#login_form').hide();
+        $('#register_form').show();
+    });
+</script>
+<script type="text/javascript">
+    var today = new Date();
+    var day = today.getDate();
+    var month = today.getMonth() + 1;
 
-        }
-    </script>
+    var year = today.getFullYear();
+    if (day < 10) {
+        day = '0' + day;
+    }
+    if (month < 10) {
+        month = '0' + month;
+    }
+    var today = day + '.' + month + '.' + year;
+    document.getElementById("date_start").placeholder =
+        document.getElementById("date_publication").placeholder =
+        document.getElementById("date_signed").placeholder =
+        document.getElementById("imp_deadline_start").placeholder =
+        document.getElementById("imp_deadline_end").placeholder =
+        document.getElementById("conclusion_date").placeholder = today;
+</script>
+<script type="text/javascript">
+    function ClearAll() {
+        document.getElementById("procuremend_number").value =
+            document.getElementById("procuremend_type").value =
+            document.getElementById("procuremend_activity").value =
+            document.getElementById("date_start").value =
+            document.getElementById("date_publication").value =
+            document.getElementById("date_signed").value =
+            document.getElementById("imp_deadline_start").value =
+            document.getElementById("imp_deadline_end").value =
+            document.getElementById("conclusion_date").value =
+            document.getElementById("price").value =
+            document.getElementById("total_price").value =
+            document.getElementById("contract_title").value =
+            document.getElementById("contractor_name").value = "";
+        document.getElementById("albanian").checked =
+            document.getElementById("english").checked =
+            document.getElementById("serbian").checked = false;
+        document.getElementById("procuremend_type").value = "Lloji i prokurimit";
+
+    }
+</script>
 </body>
-</html>
