@@ -1,0 +1,5 @@
+Contract_Examples/
+test.html
+Web.config
+.*
+!/.gitignore
