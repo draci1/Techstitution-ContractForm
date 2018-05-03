@@ -1,251 +1,290 @@
 <body>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-3 left-panel h-100">
-            <div class="text-light">
-                <div class="row left-panel-title">
-                    <img src="img/logo-pr-white.svg" alt="prishtina emblem" />
-                    <h1>PRISHTINA ONLINE</h1>
+    <div class="container-fluid">
+        <div class="row h-100">
+            <div class="col-md-2 left-panel">
+                <div class="text-light">
+                    <a href="http://prishtinaonline.com/">
+                        <div class="row left-panel-title">
+                            <img src="img/logo-pr-white.svg" alt="prishtina emblem" />
+                            <h2>PRISHTINA ONLINE</h2>
+                        </div>
+                    </a>
+                    <a id="hammenu" onclick="MenuVisible()" class="d-block d-sm-block d-md-none d-lg-none d-xl-none">
+                        <h3>
+                            <i class="fa fa-bars"></i>
+                        </h3>
+                    </a>
+                    <a id="menu-contract">
+                        <h3>KONTRATAT</h3>
+                    </a>
+                    <a id="menu-add">
+                        <h3>SHTO</h3>
+                    </a>
+                    <a id="menu-edit">
+                        <h3>MODIFIKO</h3>
+                    </a>
+                    <a id="menu-delete">
+                        <h3>FSHIJ</h3>
+                    </a>
+                    <a id="menu-archive">
+                        <h3>ARKIVA</h3>
+                    </a>
                 </div>
-                    <h3><a href="#">SHTO</a></h3>
-                    <h3><a href="#">MODIFIKO</a></h3>
-                    <h3><a href="#">FSHIJ</a></h3>
-                    <h3><a href="#">ARKIVA</a></h3>
             </div>
-        </div>
-        <div class="col-md-9 bg-light h-100" style="max-height:100%;overflow-y:auto;">
-            <div clas="row">
-                <div class="col-md-8 offset-md-2 column">
-                <h1 class="title">Shto kontratën e re</h1>
-                <br />
-                <form>
-                    <div class="form-group">
-                        <h2>Informata bazike: </h2>
-                        <div class="row">
-                            <div class="col-md-10">
-                                <label for="contract_title">Titulli i kontratës</label>
-                                <input type="text" id="contract_title" name="contract_title" class="form-control" placeholder="Titulli i kontratës" required />
-                            </div>
-                        </div>
+            <div class="col-md-10 bg-light h-100 right-panel" style="max-height:100%;overflow-y:auto;">
+                <div clas="row">
+                    <div class="col-md-8 offset-md-2 column">
+                        <h1 class="title">Shto kontratën e re</h1>
                         <br />
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label>Ky njoftim është përgatitur në GJUHËT: </label><br />
+                        <form>
+                            <div class="form-group">
+                                <h2>Informata bazike: </h2>
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <label for="contract_title">Titulli i kontratës</label>
+                                        <input type="text" id="contract_title" name="contract_title" class="form-control" placeholder="Titulli i kontratës" required
+                                        />
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Ky njoftim është përgatitur në GJUHËT: </label>
+                                        <br />
 
-                                <div class="form-check form-check-inline">
-                                    <div class="col-md-6">
-                                        <input class="form-check-input" type="checkbox" id="albanian" name="language" value="Shqip" required />
-                                        <label class="form-check-label" for="albanian">Shqip</label>
+                                        <div class="form-check form-check-inline">
+                                            <div class="col-md-6">
+                                                <input class="form-check-input" type="checkbox" id="albanian" name="language" value="Shqip" required />
+                                                <label class="form-check-label" for="albanian">Shqip</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input class="form-check-input" type="checkbox" id="english" name="language" value="Anglisht" required />
+                                                <label class="form-check-label" for="english">Anglisht</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input class="form-check-input" type="checkbox" id="serbian" name="language" value="Serbisht" required />
+                                                <label class="form-check-label" for="serbian">Serbisht</label>
+                                            </div>
+                                        </div>
+
                                     </div>
-                                    <div class="col-md-6">
-                                        <input class="form-check-input" type="checkbox" id="english" name="language" value="Anglisht" required />
-                                        <label class="form-check-label" for="english">Anglisht</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <h2>Prokurimi: </h2>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <label for="procuremend_number">Nr. rendor i prokurimit</label>
+                                        <input class="form-control" id="procuremend_number" name="procurement_number" type="text" placeholder="Nr. rendor i prokurimit"
+                                            onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" required
+                                        />
                                     </div>
-                                    <div class="col-md-6">
-                                        <input class="form-check-input" type="checkbox" id="serbian" name="language" value="Serbisht" required />
-                                        <label class="form-check-label" for="serbian">Serbisht</label>
+
+                                    <div class="col-md-5">
+                                        <label for="procuremend_type">Lloji i prokurimit</label>
+                                        <div class="d-none d-sm-none d-md-block d-lg-none">
+                                            <br />
+                                        </div>
+                                        <select class="form-control" id="procuremend_type" name="procurement_type" type="text" required>
+                                            <option name="null" selected="selected">Lloji i prokurimit</option>
+                                            <optgroup label="Punë">
+                                                <option value="pune_egzekutim">Ekzekutim</option>
+                                                <option value="pune_planegzekutim">Plani dhe ekzekutimi</option>
+                                                <option value="pune_realizim">
+                                                    Realizimi, në çfarëdo mënyre, të punës, përgjegjës me kërkesa
+                                                </option>
+                                            </optgroup>
+                                            <optgroup label="Furnizime">
+                                                <option value="furnizime_blerje">Blejra</option>
+                                                <option value="furnizime_lizing">Qira Financiare (Lizing)</option>
+                                                <option value="furnizime_qira">Qira</option>
+                                                <option value="furnizime_blerjekeste">Blerje me këste</option>
+                                                <option value="furnizime_combo">Një kombinim i këtyre</option>
+                                            </optgroup>
+                                            <optgroup label="Sherbime">
+                                                <option value="sherbime_sherbime">Shërbime</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <label for="procuremend_activity">Aktiviteti i prokurimit</label>
+                                        <input class="form-control" id="procuremend_activity" name="id_procurement" maxlength="17" type="text" placeholder="Aktiviteti i prokurimit"
+                                            required />
                                     </div>
                                 </div>
 
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <h2>Prokurimi: </h2>
-                        <div class="row">
-                            <div class="col-md-5">
-                                <label for="procuremend_number">Nr. rendor i prokurimit</label>
-                                <input class="form-control" id="procuremend_number" name="procurement_number" type="text" placeholder="Nr. rendor i prokurimit" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" required />
-                            </div>
-
-                            <div class="col-md-5">
-                                <label for="procuremend_type">Lloji i prokurimit</label>
-                                <div class="d-none d-sm-none d-md-block d-lg-none"><br /></div>
-                                <select class="form-control" id="procuremend_type" name="procurement_type" type="text" required>
-                                    <option name="null" selected="selected">Lloji i prokurimit</option>
-                                    <optgroup label="Punë">
-                                        <option value="pune_egzekutim">Ekzekutim</option>
-                                        <option value="pune_planegzekutim">Plani dhe ekzekutimi</option>
-                                        <option value="pune_realizim">
-                                            Realizimi, në çfarëdo
-                                            mënyre, të punës, përgjegjës
-                                            me kërkesa
-                                        </option>
-                                    </optgroup>
-                                    <optgroup label="Furnizime">
-                                        <option value="furnizime_blerje">Blejra</option>
-                                        <option value="furnizime_lizing">Qira Financiare (Lizing)</option>
-                                        <option value="furnizime_qira">Qira</option>
-                                        <option value="furnizime_blerjekeste">Blerje me këste</option>
-                                        <option value="furnizime_combo">Një kombinim i këtyre</option>
-                                    </optgroup>
-                                    <optgroup label="Sherbime">
-                                        <option value="sherbime_sherbime">Shërbime</option>
-                                    </optgroup>
-                                </select>
-                            </div>
-                        </div>
-                        <br />
-                        <div class="row">
-                            <div class="col-md-10">
-                                <label for="procuremend_activity">Aktiviteti i prokurimit</label>
-                                <input class="form-control" id="procuremend_activity" name="id_procurement" maxlength="17" type="text" placeholder="Aktiviteti i prokurimit" required />
-                            </div>
-                        </div>
-
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <h2>Datat: </h2>
-                        <div class="row">
-                            <div class="col-md-5">
-                                <label for="date_start">Data e inicimit të aktivitetit të prokurimit</label>
-                                <input class="form-control" id="date_start" name="date_start" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" required />
-                            </div>
-                            <div class="col-md-5">
-                                <label for="date_publication">Data e publikimit të shpalljes</label>
-                                <div class="d-none d-sm-block d-md-block d-lg-block d-xl-block"><br /></div>
-                                <input class="form-control" id="date_publication" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" required />
-                            </div>
-                        </div>
-                        <br />
-                        <div class="row">
-                            <div class="col-md-10">
-                                <label for="date_signed">Data e nënshkrimit të kontratës</label>
-                                <input class="form-control" id="date_signed" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" required>
-                            </div>
-                        </div>
-                        <br />
-                        <label for="imp_deadline_start">Afati për implementimin e kontratës</label>
-                        <div class="row">
-                            <div class="col-md-5">
-                                <div class="d-md-none d-lg-none d-xl-none"><label>(Prej)</label></div>
-                                <input class="form-control" id="imp_deadline_start" name="imp_deadline_start" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" required>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="d-md-none d-lg-none d-xl-none"><label>(Deri)</label></div>
-                                <input class="form-control" id="imp_deadline_end" name="imp_deadline_end" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" required>
-                            </div>
-
-                        </div>
-                        <br />
-                        <div class="row">
-                            <div class="col-md-10">
-                                <label for="conclusion_date">Data e përmbylles së kontratës (data e pranimit të përkohshëm / preliminar)</label>
-                                <input class="form-control" id="conclusion_date" name="conclusion_date" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" required>
-                            </div>
-                        </div>
-                    </div>
-                    <br />
-                    <div class="form-group">
-                        <h2>Çmimi dhe të dhënat tjera:</h2>
-                        <div class="row">
-                            <div class="col-md-5">
-                                <label for="price">Çmimi i kontratës (duke përfshirë të gjitha taksat)</label>
-                                <input class="form-control" id="price" name="price" type="text" placeholder="Çmimi i kontrates" required />
-                            </div>
-                            <div class="col-md-5">
-                                <label for="total_price">Çmimi total i paguar për kontraten</label>
-                                <div class="d-none d-sm-block d-md-block d-lg-none d-xl-block"><br /></div>
-                                <input class="form-control" id="total_price" name="total_price" type="text" placeholder="Çmimi total" required />
-                            </div>
-                        </div>
-                        <br />
-                        <div class="row">
-                            <div class="col-md-10">
-                                <label for="contractor_name">Emri i të cilit i është dhënë kontrata</label>
-                                <input class="form-control" id="contractor_name" type="text" placeholder="Emri dhe mbiemri" required />
-                            </div>
-                        </div>
-                        <br />
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <input class="btn btn-primary btn-block" type="submit" value="Dërgo" />
+                            <br>
+                            <div class="form-group">
+                                <h2>Datat: </h2>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <label for="date_start">Data e inicimit të aktivitetit të prokurimit</label>
+                                        <input class="form-control" id="date_start" name="date_start" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
+                                            required />
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label for="date_publication">Data e publikimit të shpalljes</label>
+                                        <div class="d-none d-sm-block d-md-block d-lg-block d-xl-block"></div>
+                                        <input class="form-control" id="date_publication" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
+                                            required />
+                                    </div>
                                 </div>
-                                <div class="d-none d-sm-block d-md-block d-lg-none d-xl-block"><br /></div>
-                                <div class="col-md-5">
-                                    <button class="btn btn-secondary btn-block" type="button" onclick="ClearAll()">Fshij</button>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <label for="date_signed">Data e nënshkrimit të kontratës</label>
+                                        <input class="form-control" id="date_signed" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
+                                            required>
+                                    </div>
+                                </div>
+                                <br />
+                                <label for="imp_deadline_start">Afati për implementimin e kontratës</label>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="d-md-none d-lg-none d-xl-none">
+                                            <label>(Prej)</label>
+                                        </div>
+                                        <input class="form-control" id="imp_deadline_start" name="imp_deadline_start" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
+                                            required>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="d-md-none d-lg-none d-xl-none">
+                                            <label>(Deri)</label>
+                                        </div>
+                                        <input class="form-control" id="imp_deadline_end" name="imp_deadline_end" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
+                                            required>
+                                    </div>
+
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <label for="conclusion_date">Data e përmbylles së kontratës (data e pranimit të përkohshëm / preliminar)</label>
+                                        <input class="form-control" id="conclusion_date" name="conclusion_date" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
+                                            required>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                            <br />
+                            <div class="form-group">
+                                <h2>Çmimi dhe të dhënat tjera:</h2>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <label for="price">Çmimi i kontratës (duke përfshirë të gjitha taksat)</label>
+                                        <input class="form-control" id="price" name="price" type="text" placeholder="Çmimi i kontrates" required />
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label for="total_price">Çmimi total i paguar për kontraten</label>
+                                        <div class="d-none d-sm-block d-md-block d-lg-none d-xl-block">
+                                            <br />
+                                        </div>
+                                        <input class="form-control" id="total_price" name="total_price" type="text" placeholder="Çmimi total" required />
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <label for="contractor_name">Emri i të cilit i është dhënë kontrata</label>
+                                        <input class="form-control" id="contractor_name" type="text" placeholder="Emri dhe mbiemri" required />
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <input class="btn btn-primary btn-block" type="submit" value="Dërgo" />
+                                        </div>
+                                        <div class="d-block d-sm-block d-md-block d-lg-none d-xl-none">
+                                            <br />
+                                            <br />
+                                        </div>
+                                        <div class="col-md-5">
+                                            <button class="btn btn-secondary btn-block" type="reset" onclick="ClearAll()">Fshij</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <br />
+                        <br />
+                        <br>
+                        <br>
+                        <br>
                     </div>
-                </form>
-                <br /><br />
+                </div>
             </div>
         </div>
     </div>
-        </div>
-    </div>
 
-<script type="text/javascript">
-    $('#switch-forms .btn').on('click', function() {
-        $('#switch-forms .btn').removeClass('active');
-        $(this).addClass('active');
-    });
-    $('#login_click').on('click', function() {
-        $('#register_form').hide();
-        $('#login_form').show();
-    });
-    $('#register_click').on('click', function() {
-        $('#login_form').hide();
-        $('#register_form').show();
-    });
-</script>
-<script type="text/javascript">
-    $('#switch-forms .btn').on('click', function() {
-        $('#switch-forms .btn').removeClass('active');
-        $(this).addClass('active');
-    });
-    $('#login_click').on('click', function() {
-        $('#register_form').hide();
-        $('#login_form').show();
-    });
-    $('#register_click').on('click', function() {
-        $('#login_form').hide();
-        $('#register_form').show();
-    });
-</script>
-<script type="text/javascript">
-    var today = new Date();
-    var day = today.getDate();
-    var month = today.getMonth() + 1;
+    <!-- Sets date placeholders with today's date -->
+    <script type="text/javascript">
+        var today = new Date();
+        var day = today.getDate();
+        var month = today.getMonth() + 1;
 
-    var year = today.getFullYear();
-    if (day < 10) {
-        day = '0' + day;
-    }
-    if (month < 10) {
-        month = '0' + month;
-    }
-    var today = day + '.' + month + '.' + year;
-    document.getElementById("date_start").placeholder =
-        document.getElementById("date_publication").placeholder =
-        document.getElementById("date_signed").placeholder =
-        document.getElementById("imp_deadline_start").placeholder =
-        document.getElementById("imp_deadline_end").placeholder =
-        document.getElementById("conclusion_date").placeholder = today;
-</script>
-<script type="text/javascript">
-    function ClearAll() {
-        document.getElementById("procuremend_number").value =
-            document.getElementById("procuremend_type").value =
-            document.getElementById("procuremend_activity").value =
-            document.getElementById("date_start").value =
-            document.getElementById("date_publication").value =
-            document.getElementById("date_signed").value =
-            document.getElementById("imp_deadline_start").value =
-            document.getElementById("imp_deadline_end").value =
-            document.getElementById("conclusion_date").value =
-            document.getElementById("price").value =
-            document.getElementById("total_price").value =
-            document.getElementById("contract_title").value =
-            document.getElementById("contractor_name").value = "";
-        document.getElementById("albanian").checked =
-            document.getElementById("english").checked =
-            document.getElementById("serbian").checked = false;
-        document.getElementById("procuremend_type").value = "Lloji i prokurimit";
+        var year = today.getFullYear();
+        if (day < 10) {
+            day = '0' + day;
+        }
+        if (month < 10) {
+            month = '0' + month;
+        }
+        var today = day + '.' + month + '.' + year;
+        document.getElementById("date_start").placeholder =
+            document.getElementById("date_publication").placeholder =
+            document.getElementById("date_signed").placeholder =
+            document.getElementById("imp_deadline_start").placeholder =
+            document.getElementById("imp_deadline_end").placeholder =
+            document.getElementById("conclusion_date").placeholder = today;
+    </script>
 
-    }
-</script>
+    <script>
+        function ShowMenu(el){
+            el.style.display="block";
+        }
+        function HideMenu(el){
+            el.style.display="none";
+        }
+    </script>
+    <!-- Hides menus via hamburger menu click -->
+    <script type="text/javascript">
+        function MenuVisible() {
+            var x = ['menu-contract', 'menu-add', 'menu-edit', 'menu-delete', 'menu-archive'];
+            for (i = 0; i < x.length; i++) {
+                if (document.getElementById(x[i]).style.display === "none") {
+                    ShowMenu(document.getElementById(x[i]));
+                } else {
+                    HideMenu(document.getElementById(x[i]));
+                }
+            }
+        }
+    </script>
+
+    <!-- Fixes following bug: if hamburger menu is clicked and window is resized, the hamburger
+         menu disappear but the other menus stay non-visible when they actually need to be visible -->
+    <script>
+        window.onresize = function (event) {
+            var x = ['menu-contract', 'menu-add', 'menu-edit', 'menu-delete', 'menu-archive'];
+            for (i = 0; i < x.length; i++) {
+                ShowMenu(document.getElementById(x[i]));
+            }
+        };
+    </script>
+
+    <!-- hides menus at smaller screen on scroll, to get move view screen -->
+    <script>
+            $(".right-panel").on('scroll', function(){
+                var screenWidth = $(window).width();
+                if (screenWidth <= 768){ // if screen is that of a tablet or phone
+                    var x = ['menu-contract', 'menu-add', 'menu-edit', 'menu-delete', 'menu-archive'];
+                    for (i = 0; i < x.length; i++) {
+                        HideMenu(document.getElementById(x[i]));
+                    }
+                }
+            });
+    </script>
 </body>
