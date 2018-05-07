@@ -20,6 +20,9 @@
                     <a id="menu-add">
                         <h3>SHTO</h3>
                     </a>
+                    <a id="menu-modify">
+                        <h3>MODIFIKO</h3>
+                    </a>
                     <a id="menu-archive">
                         <h3>ARKIVA</h3>
                     </a>
@@ -38,11 +41,11 @@
                                 <table id="datatable" class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Emri</th>
-                                            <th>Numri i Prokurimit</th>
-                                            <th>Data e Fillimit</th>
-                                            <th>Data e mbarimit</th>
-                                            <th>Kontraktuesi</th>
+                                            <th scope="col">Emri</th>
+                                            <th scope="col">Numri i Prokurimit</th>
+                                            <th scope="col">Data e Fillimit</th>
+                                            <th scope="col">Data e mbarimit</th>
+                                            <th scope="col">Kontraktuesi</th>
                                         </tr>
                                     </thead>
 
@@ -50,8 +53,8 @@
                                     <tbody>
                                         <% docs.map((doc) => { %>
                                             <tr class="contract-row" data-toggle='modal.$rowid_projec' data-target="#myModal$row[id_project]" onclick="popup('id01','<%= doc.procurement_type %>','<%= doc.price %>','<%= doc.contractor_name %>')">
-                                                <td id='popupproj'>
-                                                        <%= doc.contract_title %>
+                                                <td id='popupproj' scope="row">
+                                                    <%= doc.contract_title %>
                                                 </td>
                                                 <td>
                                                     <%= doc.procurement_number %>
@@ -88,6 +91,7 @@
                                 </div>
                             </div>
                         </div>
+                        <br>
                     </div>
                     <div id="add-contract">
                         <div class="col-md-8 offset-md-2 column">
@@ -174,6 +178,10 @@
                                     </div>
 
                                 </div>
+                                <br />
+                                <br />
+                                <br>
+                                <br>
                                 <br>
                                 <div class="form-group">
                                     <h2>Datat: </h2>
@@ -273,6 +281,76 @@
                             <br>
                         </div>
                     </div>
+                    <div id="modify-contract">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Menaxho Kontratat</h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <table id="datatable" class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Emri</th>
+                                            <th>Numri i Prokurimit</th>
+                                            <th>Data e Fillimit</th>
+                                            <th>Data e mbarimit</th>
+                                            <th>Kontraktuesi</th>
+                                            <th>Modifiko</th>
+                                        </tr>
+                                    </thead>
+
+
+                                    <tbody>
+                                        <% docs.map((doc) => { %>
+                                            <tr class="contract-row">
+                                                <td id='popupproj' data-toggle='modal.$rowid_projec' data-target="#myModal$row[id_project]" onclick="popup('id01','<%= doc.procurement_type %>','<%= doc.price %>','<%= doc.contractor_name %>')">
+                                                    <%= doc.contract_title %>
+                                                </td>
+                                                <td data-toggle='modal.$rowid_projec' data-target="#myModal$row[id_project]" onclick="popup('id01','<%= doc.procurement_type %>','<%= doc.price %>','<%= doc.contractor_name %>')">
+                                                    <%= doc.procurement_number %>
+                                                </td>
+                                                <td data-toggle='modal.$rowid_projec' data-target="#myModal$row[id_project]" onclick="popup('id01','<%= doc.procurement_type %>','<%= doc.price %>','<%= doc.contractor_name %>')">
+                                                    <%= doc.imp_deadline_start %>
+                                                </td>
+                                                <td data-toggle='modal.$rowid_projec' data-target="#myModal$row[id_project]" onclick="popup('id01','<%= doc.procurement_type %>','<%= doc.price %>','<%= doc.contractor_name %>')">
+                                                    <%= doc.imp_deadline_end %>
+                                                </td>
+                                                <td data-toggle='modal.$rowid_projec' data-target="#myModal$row[id_project]" onclick="popup('id01','<%= doc.procurement_type %>','<%= doc.price %>','<%= doc.contractor_name %>')">
+                                                    <%= doc.contractor_name %>
+                                                </td>
+                                                <td style="text-align:center;">
+                                                    <a href="#">
+                                                        <i class="fa fa-edit" style="padding-right:15%;"></i>
+                                                    </a>
+                                                    <a href="">
+                                                        <i class="fa fa-trash" style="padding-left:15%;"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <% }); %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="w3-container">
+                            <div id="id01" class="w3-modal">
+                                <div class="w3-modal-content w3-card-4 w3-animate-zoom">
+                                    <header class="w3-container w3-blue">
+                                        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-blue w3-xlarge w3-display-topright">&times;</span>
+                                        <h2 id="contract_title_modal" style="padding-top:1%;">Projekti</h2>
+                                    </header>
+                                    <div id="London" class="w3-container city">
+                                        <h1 id="contract_content_modal">Diçka shkoi keq.</h1>
+                                        <p id="contract_price_modal">Ju lutem provoni më vonë.</p>
+                                    </div>
+                                    <div class="w3-container w3-light-grey w3-padding">
+                                        <button class="w3-button w3-right w3-white w3-border" onclick="document.getElementById('id01').style.display='none'">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -286,11 +364,18 @@
         });
         $('#menu-contract').on('click', function () {
             $('#add-contract').hide();
+            $('#modify-contract').hide();
             $('#view-contract').show();
         });
         $('#menu-add').on('click', function () {
             $('#view-contract').hide();
+            $('#modify-contract').hide();
             $('#add-contract').show();
+        });
+        $('#menu-modify').on('click', function () {
+            $('#view-contract').hide();
+            $('#modify-contract').show();
+            $('#add-contract').hide();
         });
     </script>
     <!-- Sets date placeholders with today's date -->
@@ -326,7 +411,7 @@
     <!-- Hides menus via hamburger menu click -->
     <script type="text/javascript">
         function MenuVisible() {
-            var x = ['menu-contract', 'menu-add', 'menu-archive'];
+            var x = ['menu-contract', 'menu-add', 'menu-archive', 'menu-modify'];
             for (i = 0; i < x.length; i++) {
                 if (document.getElementById(x[i]).style.display === "none") {
                     ShowMenu(document.getElementById(x[i]));
@@ -341,7 +426,7 @@
          menu disappear but the other menus stay non-visible when they actually need to be visible -->
     <script>
         window.onresize = function (event) {
-            var x = ['menu-contract', 'menu-add', 'menu-archive'];
+            var x = ['menu-contract', 'menu-add', 'menu-archive', 'menu-modify'];
             for (i = 0; i < x.length; i++) {
                 ShowMenu(document.getElementById(x[i]));
             }
@@ -353,7 +438,7 @@
         $(".right-panel").on('scroll', function () {
             var screenWidth = $(window).width();
             if (screenWidth <= 768) { // if screen is that of a tablet or phone
-                var x = ['menu-contract', 'menu-add', 'menu-archive'];
+                var x = ['menu-contract', 'menu-add', 'menu-archive', 'menu-modify'];
                 for (i = 0; i < x.length; i++) {
                     HideMenu(document.getElementById(x[i]));
                 }
@@ -370,4 +455,5 @@
             document.getElementById('contract_price_modal').innerHTML = "Çmimi: " + price;
         }
     </script>
+
 </body>
