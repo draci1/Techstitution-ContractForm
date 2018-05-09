@@ -650,5 +650,38 @@
         }
     </script>
 
-    
+<script type="text/javascript">
+    $(function () {
+        var inputmask = new Inputmask("###-##-###-#-#-#");
+        inputmask.mask($('[id*=procurement_number]'));
+        inputmask.mask($('[id*=edit_procurement_number]'));
+    });
+    $(function () {
+        var inputmask = new Inputmask("##.##.####");
+        inputmask.mask($('[id*=date_start]'));
+        inputmask.mask($('[id*=date_publication]'));
+        inputmask.mask($('[id*=date_signed]'));
+        inputmask.mask($('[id*=imp_deadline_start]'));
+        inputmask.mask($('[id*=imp_deadline_end]'));
+        inputmask.mask($('[id*=conclusion_date]'));
+        inputmask.mask($('[id*=edit_date_start]'));
+        inputmask.mask($('[id*=edit_date_publication]'));
+        inputmask.mask($('[id*=edit_date_signed]'));
+        inputmask.mask($('[id*=edit_imp_deadline_start]'));
+        inputmask.mask($('[id*=edit_imp_deadline_end]'));
+        inputmask.mask($('[id*=edit_conclusion_date]'));
+    });
+
+    $(function () {
+        var requiredCheckboxes = $(':checkbox[required]');
+        requiredCheckboxes.change(function () {
+            if (requiredCheckboxes.is(':checked')) {
+                requiredCheckboxes.removeAttr('required');
+            } else {
+                requiredCheckboxes.attr('required', 'required');
+            }
+        });
+    });
+
+</script>
 </body>
