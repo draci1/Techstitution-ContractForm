@@ -323,7 +323,7 @@
                                                     <%= doc.contractor_name %>
                                                 </td>
                                                 <td style="text-align:center;" class="edit_button" id="<%= doc._id %>" data-toggle='modal.$rowid_projec' data-target="#myModal$row[id_project]"
-                                                    onclick="popup('id02','<%= doc.procurement_type %>','<%= doc.price %>','<%= doc.contractor_name %>')">
+                                                    onclick="popup_edit('id02','<%= doc._id %>','<%= doc.contract_title %>','<%= doc.procurement_number %>','<%= doc.procurement_activity %>','<%= doc.date_start %>','<%= doc.date_publication %>','<%= doc.date_signed %>','<%= doc.imp_deadline_start %>','<%= doc.imp_deadline_end %>','<%= doc.conclusion_date %>','<%= doc.price %>','<%= doc.total_price %>','<%= doc.contractor_name %>')">
                                                     <i class="fa fa-edit"></i>
                                                 </td>
                                                 <td style="text-align:center;" onclick="confirm('A jeni te sigurt se deshironi t\'a fshini kontraten?')">
@@ -345,13 +345,13 @@
                                     <!-- Modal that contains the editing form -->
                                     <div class="col-md-8 offset-md-2 column">
                                         <br />
-                                        <form method="post" action="/create">
+                                        <form method="post" action="/edit">
                                             <div class="form-group">
                                                 <h2>Informata bazike: </h2>
                                                 <div class="row">
                                                     <div class="col-md-10">
                                                         <label for="contract_title">Titulli i kontratës</label>
-                                                        <input type="text" id="edit_contract_title" name="contract_title" class="form-control" placeholder="Titulli i kontratës"
+                                                        <input type="text" id="edit_contract_title" name="edit_contract_title" class="form-control" placeholder="Titulli i kontratës"
                                                             required />
                                                     </div>
                                                 </div>
@@ -363,15 +363,15 @@
 
                                                         <div class="form-check form-check-inline">
                                                             <div class="col-md-6">
-                                                                <input class="form-check-input" type="checkbox" id="edit_albanian" name="language1" value="true" required />
+                                                                <input class="form-check-input" type="checkbox" id="edit_albanian" name="edit_language1" value="true" required />
                                                                 <label class="form-check-label" for="albanian">Shqip</label>
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <input class="form-check-input" type="checkbox" id="edit_english" name="language2" value="true" required />
+                                                                <input class="form-check-input" type="checkbox" id="edit_english" name="edit_language2" value="true" required />
                                                                 <label class="form-check-label" for="english">Anglisht</label>
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <input class="form-check-input" type="checkbox" id="edit_serbian" name="language3" value="true" required />
+                                                                <input class="form-check-input" type="checkbox" id="edit_serbian" name="edit_language3" value="true" required />
                                                                 <label class="form-check-label" for="serbian">Serbisht</label>
                                                             </div>
                                                         </div>
@@ -384,7 +384,7 @@
                                                 <div class="row">
                                                     <div class="col-md-5">
                                                         <label for="procurement_number">Nr. rendor i prokurimit</label>
-                                                        <input class="form-control" id="edit_procurement_number" name="procurement_number" type="text" placeholder="Nr. rendor i prokurimit"
+                                                        <input class="form-control" id="edit_procurement_number" name="edit_procurement_number" type="text" placeholder="Nr. rendor i prokurimit"
                                                             onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
                                                             required />
                                                     </div>
@@ -394,8 +394,8 @@
                                                         <div class="d-none d-sm-none d-md-block d-lg-none">
                                                             <br />
                                                         </div>
-                                                        <select class="form-control" id="edit_procurement_type" name="procurement_type" type="text" required>
-                                                            <option name="null" selected="selected">Lloji i prokurimit</option>
+                                                        <select class="form-control" id="edit_procurement_type" name="edit_procurement_type" type="text" required>
+                                                            <option name="edit_null" selected="selected">Lloji i prokurimit</option>
                                                             <optgroup label="Punë">
                                                                 <option value="pune_egzekutim">Ekzekutim</option>
                                                                 <option value="pune_planegzekutim">Plani dhe ekzekutimi</option>
@@ -420,7 +420,7 @@
                                                 <div class="row">
                                                     <div class="col-md-10">
                                                         <label for="procurement_activity">Aktiviteti i prokurimit</label>
-                                                        <input class="form-control" id="edit_procurement_activity" name="procurement_activity" maxlength="17" type="text" placeholder="Aktiviteti i prokurimit"
+                                                        <input class="form-control" id="edit_procurement_activity" name="edit_procurement_activity" maxlength="17" type="text" placeholder="Aktiviteti i prokurimit"
                                                             required />
                                                     </div>
                                                 </div>
@@ -436,13 +436,13 @@
                                                 <div class="row">
                                                     <div class="col-md-5">
                                                         <label for="date_start">Data e inicimit të aktivitetit të prokurimit</label>
-                                                        <input class="form-control" id="edit_date_start" name="date_start" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
+                                                        <input class="form-control" id="edit_date_start" name="edit_date_start" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
                                                             required />
                                                     </div>
                                                     <div class="col-md-5">
                                                         <label for="date_publication">Data e publikimit të shpalljes</label>
                                                         <div class="d-none d-sm-block d-md-block d-lg-block d-xl-block"></div>
-                                                        <input class="form-control" name="date_publication" id="edit_date_publication" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
+                                                        <input class="form-control" name="edit_date_publication" id="edit_date_publication" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
                                                             required />
                                                     </div>
                                                 </div>
@@ -451,7 +451,7 @@
                                                     <div class="col-md-10">
                                                         <label for="date_signed">Data e nënshkrimit të kontratës</label>
                                                         <input class="form-control" id="edit_date_signed" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
-                                                            name="date_signed" required>
+                                                            name="edit_date_signed" required>
                                                     </div>
                                                 </div>
                                                 <br />
@@ -461,14 +461,14 @@
                                                         <div class="d-md-none d-lg-none d-xl-none">
                                                             <label>(Prej)</label>
                                                         </div>
-                                                        <input class="form-control" id="edit_imp_deadline_start" name="imp_deadline_start" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
+                                                        <input class="form-control" id="edit_imp_deadline_start" name="edit_imp_deadline_start" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
                                                             required>
                                                     </div>
                                                     <div class="col-md-5">
                                                         <div class="d-md-none d-lg-none d-xl-none">
                                                             <label>(Deri)</label>
                                                         </div>
-                                                        <input class="form-control" id="edit_imp_deadline_end" name="imp_deadline_end" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
+                                                        <input class="form-control" id="edit_imp_deadline_end" name="edit_imp_deadline_end" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
                                                             required>
                                                     </div>
                                                 </div>
@@ -476,7 +476,7 @@
                                                 <div class="row">
                                                     <div class="col-md-10">
                                                         <label for="conclusion_date">Data e përmbylles së kontratës (data e pranimit të përkohshëm / preliminar)</label>
-                                                        <input class="form-control" id="edit_conclusion_date" name="conclusion_date" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
+                                                        <input class="form-control" id="edit_conclusion_date" name="edit_conclusion_date" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
                                                             required>
                                                     </div>
                                                 </div>
@@ -487,24 +487,25 @@
                                                 <div class="row">
                                                     <div class="col-md-5">
                                                         <label for="price">Çmimi i kontratës (duke përfshirë të gjitha taksat)</label>
-                                                        <input class="form-control" id="edit_price" name="price" type="text" placeholder="Çmimi i kontrates" required />
+                                                        <input class="form-control" id="edit_price" name="edit_price" type="text" placeholder="Çmimi i kontrates" required />
                                                     </div>
                                                     <div class="col-md-5">
                                                         <label for="total_price">Çmimi total i paguar për kontraten</label>
                                                         <div class="d-none d-sm-block d-md-block d-lg-none d-xl-block">
                                                             <br />
                                                         </div>
-                                                        <input class="form-control" id="edit_total_price" name="total_price" type="text" placeholder="Çmimi total" required />
+                                                        <input class="form-control" id="edit_total_price" name="edit_total_price" type="text" placeholder="Çmimi total" required />
                                                     </div>
                                                 </div>
                                                 <br />
                                                 <div class="row">
                                                     <div class="col-md-10">
                                                         <label for="contractor_name">Emri i të cilit i është dhënë kontrata</label>
-                                                        <input class="form-control" id="edit_contractor_name" name="contractor_name" type="text" placeholder="Emri dhe mbiemri" required
+                                                        <input class="form-control" id="edit_contractor_name" name="edit_contractor_name" type="text" placeholder="Emri dhe mbiemri" required
                                                         />
                                                     </div>
                                                 </div>
+                                                <input type="hidden" id="edit_hidden_id" value="-1">
                                                 <br />
                                                 <div class="form-group">
                                                     <div class="row">
@@ -640,7 +641,7 @@
         });
     </script>
 
-    <!-- Javascript function for modal -->
+    <!-- Javascript function for view-modal -->
     <script type="text/javascript">
         function popup(id, type, price, content) {
             document.getElementById(id).style.display = 'block';
@@ -650,38 +651,52 @@
         }
     </script>
 
-<script type="text/javascript">
-    $(function () {
-        var inputmask = new Inputmask("###-##-###-#-#-#");
-        inputmask.mask($('[id*=procurement_number]'));
-        inputmask.mask($('[id*=edit_procurement_number]'));
-    });
-    $(function () {
-        var inputmask = new Inputmask("##.##.####");
-        inputmask.mask($('[id*=date_start]'));
-        inputmask.mask($('[id*=date_publication]'));
-        inputmask.mask($('[id*=date_signed]'));
-        inputmask.mask($('[id*=imp_deadline_start]'));
-        inputmask.mask($('[id*=imp_deadline_end]'));
-        inputmask.mask($('[id*=conclusion_date]'));
-        inputmask.mask($('[id*=edit_date_start]'));
-        inputmask.mask($('[id*=edit_date_publication]'));
-        inputmask.mask($('[id*=edit_date_signed]'));
-        inputmask.mask($('[id*=edit_imp_deadline_start]'));
-        inputmask.mask($('[id*=edit_imp_deadline_end]'));
-        inputmask.mask($('[id*=edit_conclusion_date]'));
-    });
+    <!-- Javascript function for edit-modal-form -->
+    <script type="text/javascript">
+        function popup_edit(id, hidden_id,contract_title, procurement_number, procurement_activity, date_start, date_publication, date_signed, imp_deadline_start, imp_deadline_end, conclusion_date, price, total_price, contractor_name) {
+            document.getElementById(id).style.display = 'block';
+            document.getElementById('edit_contract_title').value = contract_title;
+            document.getElementById('edit_hidden_id').value=hidden_id;
+            document.getElementById('edit_procurement_number').value = procurement_number;
+            document.getElementById('edit_procurement_activity').value = procurement_activity;
+            document.getElementById('edit_date_start').value = date_start;
+            document.getElementById('edit_date_publication').value = date_publication;
+            document.getElementById('edit_date_signed').value = date_signed;
+            document.getElementById('edit_imp_deadline_start').value = imp_deadline_start;
+            document.getElementById('edit_imp_deadline_end').value = imp_deadline_end;
+            document.getElementById('edit_conclusion_date').value = conclusion_date;
+            document.getElementById('edit_price').value = price;
+            document.getElementById('edit_total_price').value = total_price;
+            document.getElementById('edit_contractor_name').value = contractor_name;
+        }
+    </script>
 
-    $(function () {
-        var requiredCheckboxes = $(':checkbox[required]');
-        requiredCheckboxes.change(function () {
-            if (requiredCheckboxes.is(':checked')) {
-                requiredCheckboxes.removeAttr('required');
-            } else {
-                requiredCheckboxes.attr('required', 'required');
-            }
+    <script type="text/javascript">
+        $(function () {
+            var inputmask = new Inputmask("###-##-###-#-#-#");
+            inputmask.mask($('[id*=procurement_number]'));
+            inputmask.mask($('[id*=edit_procurement_number]'));
         });
-    });
+        $(function () {
+            var inputmask = new Inputmask("##.##.####");
+            inputmask.mask($('[id*=date_start]'));
+            inputmask.mask($('[id*=date_publication]'));
+            inputmask.mask($('[id*=date_signed]'));
+            inputmask.mask($('[id*=imp_deadline_start]'));
+            inputmask.mask($('[id*=imp_deadline_end]'));
+            inputmask.mask($('[id*=conclusion_date]'));
+        });
 
-</script>
+        $(function () {
+            var requiredCheckboxes = $(':checkbox[required]');
+            requiredCheckboxes.change(function () {
+                if (requiredCheckboxes.is(':checked')) {
+                    requiredCheckboxes.removeAttr('required');
+                } else {
+                    requiredCheckboxes.attr('required', 'required');
+                }
+            });
+        });
+
+    </script>
 </body>
