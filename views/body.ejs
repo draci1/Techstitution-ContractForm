@@ -303,7 +303,6 @@
                                         </tr>
                                     </thead>
 
-
                                     <tbody>
                                         <% docs.map((doc) => { %>
                                             <tr class="contract-row">
@@ -350,7 +349,7 @@
                                                 <h2>Informata bazike: </h2>
                                                 <div class="row">
                                                     <div class="col-md-10">
-                                                        <label for="contract_title">Titulli i kontratës</label>
+                                                        <label for="edit_contract_title">Titulli i kontratës</label>
                                                         <input type="text" id="edit_contract_title" name="edit_contract_title" class="form-control" placeholder="Titulli i kontratës"
                                                             required />
                                                     </div>
@@ -364,15 +363,15 @@
                                                         <div class="form-check form-check-inline">
                                                             <div class="col-md-6">
                                                                 <input class="form-check-input" type="checkbox" id="edit_albanian" name="edit_language1" value="true" required />
-                                                                <label class="form-check-label" for="albanian">Shqip</label>
+                                                                <label class="form-check-label" for="edit_albanian">Shqip</label>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <input class="form-check-input" type="checkbox" id="edit_english" name="edit_language2" value="true" required />
-                                                                <label class="form-check-label" for="english">Anglisht</label>
+                                                                <label class="form-check-label" for="edit_english">Anglisht</label>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <input class="form-check-input" type="checkbox" id="edit_serbian" name="edit_language3" value="true" required />
-                                                                <label class="form-check-label" for="serbian">Serbisht</label>
+                                                                <label class="form-check-label" for="edit_serbian">Serbisht</label>
                                                             </div>
                                                         </div>
 
@@ -383,14 +382,14 @@
                                                 <h2>Prokurimi: </h2>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label for="procurement_number">Nr. rendor i prokurimit</label>
+                                                        <label for="edit_procurement_number">Nr. rendor i prokurimit</label>
                                                         <input class="form-control" id="edit_procurement_number" name="edit_procurement_number" type="text" placeholder="Nr. rendor i prokurimit"
                                                             onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
                                                             required />
                                                     </div>
 
                                                     <div class="col-md-5">
-                                                        <label for="procurement_type">Lloji i prokurimit</label>
+                                                        <label for="edit_procurement_type">Lloji i prokurimit</label>
                                                         <div class="d-none d-sm-none d-md-block d-lg-none">
                                                             <br />
                                                         </div>
@@ -419,7 +418,7 @@
                                                 <br />
                                                 <div class="row">
                                                     <div class="col-md-10">
-                                                        <label for="procurement_activity">Aktiviteti i prokurimit</label>
+                                                        <label for="edit_procurement_activity">Aktiviteti i prokurimit</label>
                                                         <input class="form-control" id="edit_procurement_activity" name="edit_procurement_activity" maxlength="17" type="text" placeholder="Aktiviteti i prokurimit"
                                                             required />
                                                     </div>
@@ -435,12 +434,12 @@
                                                 <h2>Datat: </h2>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label for="date_start">Data e inicimit të aktivitetit të prokurimit</label>
+                                                        <label for="edit_date_start">Data e inicimit të aktivitetit të prokurimit</label>
                                                         <input class="form-control" id="edit_date_start" name="edit_date_start" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
                                                             required />
                                                     </div>
                                                     <div class="col-md-5">
-                                                        <label for="date_publication">Data e publikimit të shpalljes</label>
+                                                        <label for="edit_date_publication">Data e publikimit të shpalljes</label>
                                                         <div class="d-none d-sm-block d-md-block d-lg-block d-xl-block"></div>
                                                         <input class="form-control" name="edit_date_publication" id="edit_date_publication" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
                                                             required />
@@ -449,13 +448,13 @@
                                                 <br />
                                                 <div class="row">
                                                     <div class="col-md-10">
-                                                        <label for="date_signed">Data e nënshkrimit të kontratës</label>
+                                                        <label for="edit_date_signed">Data e nënshkrimit të kontratës</label>
                                                         <input class="form-control" id="edit_date_signed" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
                                                             name="edit_date_signed" required>
                                                     </div>
                                                 </div>
                                                 <br />
-                                                <label for="imp_deadline_start">Afati për implementimin e kontratës</label>
+                                                <label for="edit_imp_deadline_start">Afati për implementimin e kontratës</label>
                                                 <div class="row">
                                                     <div class="col-md-5">
                                                         <div class="d-md-none d-lg-none d-xl-none">
@@ -475,7 +474,7 @@
                                                 <br />
                                                 <div class="row">
                                                     <div class="col-md-10">
-                                                        <label for="conclusion_date">Data e përmbylles së kontratës (data e pranimit të përkohshëm / preliminar)</label>
+                                                        <label for="edit_conclusion_date">Data e përmbylles së kontratës (data e pranimit të përkohshëm / preliminar)</label>
                                                         <input class="form-control" id="edit_conclusion_date" name="edit_conclusion_date" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
                                                             required>
                                                     </div>
@@ -486,11 +485,11 @@
                                                 <h2>Çmimi dhe të dhënat tjera:</h2>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label for="price">Çmimi i kontratës (duke përfshirë të gjitha taksat)</label>
+                                                        <label for="edit_price">Çmimi i kontratës (duke përfshirë të gjitha taksat)</label>
                                                         <input class="form-control" id="edit_price" name="edit_price" type="text" placeholder="Çmimi i kontrates" required />
                                                     </div>
                                                     <div class="col-md-5">
-                                                        <label for="total_price">Çmimi total i paguar për kontraten</label>
+                                                        <label for="edit_total_price">Çmimi total i paguar për kontraten</label>
                                                         <div class="d-none d-sm-block d-md-block d-lg-none d-xl-block">
                                                             <br />
                                                         </div>
@@ -500,12 +499,12 @@
                                                 <br />
                                                 <div class="row">
                                                     <div class="col-md-10">
-                                                        <label for="contractor_name">Emri i të cilit i është dhënë kontrata</label>
+                                                        <label for="edit_contractor_name">Emri i të cilit i është dhënë kontrata</label>
                                                         <input class="form-control" id="edit_contractor_name" name="edit_contractor_name" type="text" placeholder="Emri dhe mbiemri" required
                                                         />
                                                     </div>
                                                 </div>
-                                                <input type="hidden" id="edit_hidden_id" value="-1">
+                                                <input type="hidden" name="edit_hidden_id" id="edit_hidden_id" value="-1">
                                                 <br />
                                                 <div class="form-group">
                                                     <div class="row">

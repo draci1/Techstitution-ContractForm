@@ -21,8 +21,8 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
     contracts.find({}).toArray(function (err, docs) {
@@ -69,38 +69,37 @@ app.post('/edit', function (req, res, next) {
     MongoClient.connect(DB_URI, function (err, db) {
         if (err) { throw err; }
         var collection = db.collection('contracts');
-        var query = { _id: req.body.edit_hidden_id };
+        var query = { '_id': ObjectId(req.body.edit_hidden_id) };
         var newval = {
             $set:
                 {
-                    contract_title: req.body.edit_contract_title,
-                    contract_language: {
-                        albanian: req.body.edit_language1,
-                        english: req.body.edit_language2,
-                        serbian: req.body.edit_language3
+                    'contract_title': req.body.edit_contract_title,
+                    'contract_language': {
+                        'albanian': req.body.edit_language1,
+                        'english': req.body.edit_language2,
+                        'serbian': req.body.edit_language3
                     },
-                    procurement_number: req.body.edit_procurement_number,
-                    procurement_activity: req.body.edit_procurement_activity,
-                    date_start: req.body.edit_date_start,
-                    date_publication: req.body.edit_date_publication,
-                    date_signed: req.body.edit_date_signed,
-                    imp_deadline_start: req.body.edit_imp_deadline_start,
-                    imp_deadline_end: req.body.edit_imp_deadline_end,
-                    conclusion_date: req.body.edit_conclusion_date,
-                    price: req.body.edit_price,
-                    total_price: req.body.edit_total_price,
-                    contractor_name: req.body.edit_contractor_name
+                    'procurement_number': req.body.edit_procurement_number,
+                    'procurement_activity': req.body.edit_procurement_activity,
+                    'date_start': req.body.edit_date_start,
+                    'date_publication': req.body.edit_date_publication,
+                    'date_signed': req.body.edit_date_signed,
+                    'imp_deadline_start': req.body.edit_imp_deadline_start,
+                    'imp_deadline_end': req.body.edit_imp_deadline_end,
+                    'conclusion_date': req.body.edit_conclusion_date,
+                    'price': req.body.edit_price,
+                    'total_price': req.body.edit_total_price,
+                    'contractor_name': req.body.edit_contractor_name
                 }
         };
-        collection.updateOne(query, newval, function (err, res) {
+        console.log(newval);
+        collection.updateOne(query, newval, function (err, result) {
             if (err) throw err;
-            console.log("1 document updated");
             db.close();
             res.redirect('/');
         });
     });
 });
-
 
 app.listen(3000, "localhost", (err) => {
     if (err) {
