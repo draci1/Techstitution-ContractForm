@@ -46,7 +46,7 @@
                             </thead>
                             <tbody>
                                 <% docs.map((doc) => { %>
-                                    <tr class="contract-row" data-toggle='modal.$rowid_projec' data-target="#myModal$row[id_project]" onclick="popup_view('id01','<%= doc.procurement_type %>','<%= doc.price %>','<%= doc.contractor_name %>')">
+                                    <tr class="contract-row" data-toggle='modal.$rowid_projec' data-target="#myModal$row[id_project]" onclick="popup_view('id01', '<%= doc.contract_title %>','<%= doc.procurement_number %>', '<%= doc.procurement_type %>', '<%= doc.procurement_activity %>', '<%= doc.date_start %>', '<%= doc.date_publication %>', '<%= doc.date_signed %>', '<%= doc.imp_deadline_start %>', '<%= doc.imp_deadline_end %>', '<%= doc.conclusion_date %>', '<%= doc.price %>', '<%= doc.total_price %>', '<%= doc.contractor_name%>')">
                                         <td id='popupproj' scope="row">
                                             <%= doc.contract_title %>
                                         </td>
@@ -75,7 +75,6 @@
                                     </header>
                                     <div id="London" class="w3-container city">
                                         <h1 id="contract_content_modal">Diçka shkoi keq.</h1>
-                                        <p id="contract_price_modal">Ju lutem provoni më vonë.</p>
                                     </div>
                                     <div class="w3-container w3-light-grey w3-padding">
                                         <button class="w3-button w3-right w3-white w3-border" onclick="document.getElementById('id01').style.display='none'">Close</button>
@@ -595,7 +594,7 @@
                             </thead>
                             <tbody>
                                 <% arch.map((docs2) => { %>
-                                    <tr class="contract-row" data-toggle='modal.$rowid_projec' data-target="#myModal$row[id_project]" onclick="popup_archive('id04','<%= docs2.procurement_type %>','<%= docs2.price %>','<%= docs2.contractor_name %>')">
+                                    <tr class="contract-row" data-toggle='modal.$rowid_projec' data-target="#myModal$row[id_project]" onclick="popup_archive('id04','<%= docs2.contract_title %>','<%= docs2.procurement_number %>', '<%= docs2.procurement_type %>', '<%= docs2.procurement_activity %>', '<%= docs2.date_start %>', '<%= docs2.date_publication %>', '<%= docs2.date_signed %>', '<%= docs2.imp_deadline_start %>', '<%= docs2.imp_deadline_end %>', '<%= docs2.conclusion_date %>', '<%= docs2.price %>', '<%= docs2.total_price %>', '<%= docs2.contractor_name%>')">
                                         <td id='popupproj' scope="row">
                                             <%= docs2.contract_title %>
                                         </td>
@@ -624,7 +623,6 @@
                                     </header>
                                     <div id="London" class="w3-container city">
                                         <h1 id="archive_content_modal">Diçka shkoi keq.</h1>
-                                        <p id="archive_price_modal">Ju lutem provoni më vonë.</p>
                                     </div>
                                     <div class="w3-container w3-light-grey w3-padding">
                                         <button class="w3-button w3-right w3-white w3-border" onclick="document.getElementById('id04').style.display='none'">Close</button>
@@ -748,11 +746,11 @@
 
             <!-- Javascript function for view-modal -->
             <script type="text/javascript">
-                function popup_view(id, type, price, content) {
+                function popup_view(id, title, procurement_number,procurement_type, procurement_activity,date_start, date_publication, date_signed,imp_deadline_start, imp_deadline_end, conclusion_date, price, total_price, contractor_name) {
                     document.getElementById(id).style.display = 'block';
-                    document.getElementById('contract_title_modal').innerHTML = "Lloji:" + type;
-                    document.getElementById('contract_content_modal').innerHTML = content;
-                    document.getElementById('contract_price_modal').innerHTML = "Çmimi: " + price;
+                    document.getElementById('contract_title_modal').innerHTML = title;
+                    document.getElementById('contract_content_modal').innerHTML = "<b>Numri</b>: " + procurement_number + "<br><br><b>Lloji</b>: " + procurement_type + "<br><br><b>Aktiviteti</b>: " + procurement_activity + "<br><br><b>Fillon</b>: " + date_start + "<br><br><b>Publikua</b>: " + date_publication + "<br><br><b>Mbaron</b>: " + date_signed + "<br><br><b>Implementimi</b>: " + imp_deadline_start + " deri " + imp_deadline_end + "<br><br><b>Perfundon</b>: " + conclusion_date + "<br><br><b>Çmimi</b>: " + price + "<br><br><b>Totali</b>: " + total_price + "<br><br><b>Kontraktues</b>: " + contractor_name;
+                    //document.getElementById('contract_price_modal').innerHTML = "Çmimi: " + price;
                 }
             </script>
 
@@ -788,11 +786,11 @@
 
             <!--- Javascript function for view-archive -->
             <script type="text/javascript">
-                function popup_archive(id, type, price, content) {
+                function popup_archive(id, title, procurement_number,procurement_type, procurement_activity,date_start, date_publication, date_signed,imp_deadline_start, imp_deadline_end, conclusion_date, price, total_price, archiveor_name) {
                     document.getElementById(id).style.display = 'block';
-                    document.getElementById('archive_title_modal').innerHTML = "Lloji:" + type;
-                    document.getElementById('archive_content_modal').innerHTML = content;
-                    document.getElementById('archive_price_modal').innerHTML = "Çmimi: " + price;
+                    document.getElementById('archive_title_modal').innerHTML = title;
+                    document.getElementById('archive_content_modal').innerHTML = "<b>Numri</b>: " + procurement_number + "<br><br><b>Lloji</b>: " + procurement_type + "<br><br><b>Aktiviteti</b>: " + procurement_activity + "<br><br><b>Fillon</b>: " + date_start + "<br><br><b>Publikua</b>: " + date_publication + "<br><br><b>Mbaron</b>: " + date_signed + "<br><br><b>Implementimi</b>: " + imp_deadline_start + " deri " + imp_deadline_end + "<br><br><b>Perfundon</b>: " + conclusion_date + "<br><br><b>Çmimi</b>: " + price + "<br><br><b>Totali</b>: " + total_price + "<br><br><b>Kontraktues</b>: " + archiveor_name;
+                    //document.getElementById('archive_price_modal').innerHTML = "Çmimi: " + price;
                 }
             </script>
 
