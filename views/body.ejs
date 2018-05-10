@@ -46,7 +46,7 @@
                             </thead>
                             <tbody>
                                 <% docs.map((doc) => { %>
-                                    <tr class="contract-row" data-toggle='modal.$rowid_projec' data-target="#myModal$row[id_project]" onclick="popup('id01','<%= doc.procurement_type %>','<%= doc.price %>','<%= doc.contractor_name %>')">
+                                    <tr class="contract-row" data-toggle='modal.$rowid_projec' data-target="#myModal$row[id_project]" onclick="popup_view('id01','<%= doc.procurement_type %>','<%= doc.price %>','<%= doc.contractor_name %>')">
                                         <td id='popupproj' scope="row">
                                             <%= doc.contract_title %>
                                         </td>
@@ -150,21 +150,21 @@
                                             <select class="form-control" id="procurement_type" name="procurement_type" type="text" required>
                                                 <option name="null" selected="selected">Lloji i prokurimit</option>
                                                 <optgroup label="Punë">
-                                                    <option value="pune_egzekutim">Ekzekutim</option>
-                                                    <option value="pune_planegzekutim">Plani dhe ekzekutimi</option>
-                                                    <option value="pune_realizim">
+                                                    <option value="Punë(Egzekutim)">Ekzekutim</option>
+                                                    <option value="Punë(Plan Egzekutim)">Plani dhe ekzekutimi</option>
+                                                    <option value="Punë(Realizim)">
                                                         Realizimi, në çfarëdo mënyre, të punës, përgjegjës me kërkesa
                                                     </option>
                                                 </optgroup>
                                                 <optgroup label="Furnizime">
-                                                    <option value="furnizime_blerje">Blejra</option>
-                                                    <option value="furnizime_lizing">Qira Financiare (Lizing)</option>
-                                                    <option value="furnizime_qira">Qira</option>
-                                                    <option value="furnizime_blerjekeste">Blerje me këste</option>
-                                                    <option value="furnizime_combo">Një kombinim i këtyre</option>
+                                                    <option value="Furnizime(Blerje)">Blejra</option>
+                                                    <option value="Furnizime(Lizing)">Qira Financiare (Lizing)</option>
+                                                    <option value="Furnizime(Qira)">Qira</option>
+                                                    <option value="Furnizime(Blerjekëste)">Blerje me këste</option>
+                                                    <option value="Furnizime(Combo)">Një kombinim i këtyre</option>
                                                 </optgroup>
                                                 <optgroup label="Sherbime">
-                                                    <option value="sherbime_sherbime">Shërbime</option>
+                                                    <option value="Shërbime(shërbime)">Shërbime</option>
                                                 </optgroup>
                                             </select>
                                         </div>
@@ -325,7 +325,7 @@
                                                     onclick="popup_edit('id02','<%= doc._id %>','<%= doc.contract_title %>','<%= doc.procurement_number %>','<%= doc.procurement_activity %>','<%= doc.date_start %>','<%= doc.date_publication %>','<%= doc.date_signed %>','<%= doc.imp_deadline_start %>','<%= doc.imp_deadline_end %>','<%= doc.conclusion_date %>','<%= doc.price %>','<%= doc.total_price %>','<%= doc.contractor_name %>')">
                                                     <i class="fa fa-edit"></i>
                                                 </td>
-                                                <td style="text-align:center;" onclick="confirm('A jeni te sigurt se deshironi t\'a fshini kontraten?')">
+                                                <td style="text-align:center;" onclick="popup_delete('id03','<%= doc._id %>')">
                                                     <i class="fa fa-trash"></i>
                                                 </td>
                                             </tr>
@@ -396,21 +396,21 @@
                                                         <select class="form-control" id="edit_procurement_type" name="edit_procurement_type" type="text" required>
                                                             <option name="edit_null" selected="selected">Lloji i prokurimit</option>
                                                             <optgroup label="Punë">
-                                                                <option value="pune_egzekutim">Ekzekutim</option>
-                                                                <option value="pune_planegzekutim">Plani dhe ekzekutimi</option>
-                                                                <option value="pune_realizim">
+                                                                <option value="Punë(Egzekutim)">Ekzekutim</option>
+                                                                <option value="Punë(Planegzekutim)">Plani dhe ekzekutimi</option>
+                                                                <option value="Punë(Realizim)">
                                                                     Realizimi, në çfarëdo mënyre, të punës, përgjegjës me kërkesa
                                                                 </option>
                                                             </optgroup>
                                                             <optgroup label="Furnizime">
-                                                                <option value="furnizime_blerje">Blejra</option>
-                                                                <option value="furnizime_lizing">Qira Financiare (Lizing)</option>
-                                                                <option value="furnizime_qira">Qira</option>
-                                                                <option value="furnizime_blerjekeste">Blerje me këste</option>
-                                                                <option value="furnizime_combo">Një kombinim i këtyre</option>
+                                                                <option value="Furnizime(Blerje)">Blejra</option>
+                                                                <option value="Furnizime(Lizing)">Qira Financiare (Lizing)</option>
+                                                                <option value="Furnizime(Qira)">Qira</option>
+                                                                <option value="Furnizime(Blerjekëste)">Blerje me këste</option>
+                                                                <option value="Furnizime(Combo)">Një kombinim i këtyre</option>
                                                             </optgroup>
                                                             <optgroup label="Sherbime">
-                                                                <option value="sherbime_sherbime">Shërbime</option>
+                                                                <option value="Shërbime(Shërbime)">Shërbime</option>
                                                             </optgroup>
                                                         </select>
                                                     </div>
@@ -493,15 +493,16 @@
                                                         <div class="d-none d-sm-block d-md-block d-lg-none d-xl-block">
                                                             <br />
                                                         </div>
-                                                        <input class="form-control" id="edit_total_price" name="edit_total_price" type="text" placeholder="Çmimi total" required />
+                                                        <input class="form-control" id="edit_total_price" name="edit_total_price" type="text" placeholder="Çmimi total" required
+                                                        />
                                                     </div>
                                                 </div>
                                                 <br />
                                                 <div class="row">
                                                     <div class="col-md-10">
                                                         <label for="edit_contractor_name">Emri i të cilit i është dhënë kontrata</label>
-                                                        <input class="form-control" id="edit_contractor_name" name="edit_contractor_name" type="text" placeholder="Emri dhe mbiemri" required
-                                                        />
+                                                        <input class="form-control" id="edit_contractor_name" name="edit_contractor_name" type="text" placeholder="Emri dhe mbiemri"
+                                                            required />
                                                     </div>
                                                 </div>
                                                 <input type="hidden" name="edit_hidden_id" id="edit_hidden_id" value="-1">
@@ -544,158 +545,282 @@
                         <br>
                         <br>
                         <br>
+                        <div class="w3-container">
+                            <div id="id03" class="w3-modal">
+                                <div class="w3-modal-content w3-card-4 w3-animate-zoom">
+                                    <header class="w3-container w3-blue">
+                                        <span onclick="document.getElementById('id03').style.display='none'" class="w3-button w3-blue w3-xlarge w3-display-topright">&times;</span>
+                                        <h2 id="contract_title_modal" style="padding-top:1%;">Fshij apo Arkivo?</h2>
+                                    </header>
+                                    <div id="London" class="w3-container city">
+                                        <br>
+                                        <br>
+                                        <div>
+                                            <form method="post" action="/delete" class="reset-this">
+                                                <button class="col-md-4 offset-md-1 btn-lg btn-danger custom-btn-class-1" type="submit">Vetem fshi</button>
+                                                <input type="hidden" name="delete_hidden_id" id="delete_hidden_id" value="-1">
+                                            </form>
+                                            <div class="d-block d-sm-block d-md-block d-lg-none d-xl-none">
+                                                <br />
+                                                <br />
+                                            </div>
+                                            <form method="post" action="/archive" class="reset-this">
+                                                <button class="col-md-4 offset-md-1 btn-lg btn-warning custom-btn-class-1" title="Kontrata nuk do te mund te ndryshohet apo shihet me. Vetem ata qe kane çasje ne arkive mund te shohin kontratat e arkivuara"
+                                                    type="submit">Fshi dhe arkivo</button>
+                                                <input type="hidden" name="archive_hidden_id" id="archive_hidden_id" value="-1">
+                                            </form>
+                                        </div>
+                                        <br>
+                                        <br>
+                                    </div>
+                                    <div class="w3-container w3-light-grey w3-padding">
+                                        <button class="w3-button w3-right w3-white w3-border" onclick="document.getElementById('id03').style.display='none'">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <div id="view-archive">
+                        <h2>Kerko Arkiven</h2>
+                        <div class="clearfix"></div>
+                        <table id="datatable" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Emri</th>
+                                    <th scope="col">Numri i Prokurimit</th>
+                                    <th scope="col">Data e Fillimit</th>
+                                    <th scope="col">Data e mbarimit</th>
+                                    <th scope="col">Kontraktuesi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% arch.map((docs2) => { %>
+                                    <tr class="contract-row" data-toggle='modal.$rowid_projec' data-target="#myModal$row[id_project]" onclick="popup_archive('id04','<%= docs2.procurement_type %>','<%= docs2.price %>','<%= docs2.contractor_name %>')">
+                                        <td id='popupproj' scope="row">
+                                            <%= docs2.contract_title %>
+                                        </td>
+                                        <td>
+                                            <%= docs2.procurement_number %>
+                                        </td>
+                                        <td>
+                                            <%= docs2.imp_deadline_start %>
+                                        </td>
+                                        <td>
+                                            <%= docs2.imp_deadline_end %>
+                                        </td>
+                                        <td>
+                                            <%= docs2.contractor_name %>
+                                        </td>
+                                    </tr>
+                                    <% }); %>
+                            </tbody>
+                        </table>
+                        <div class="w3-container">
+                            <div id="id04" class="w3-modal">
+                                <div class="w3-modal-content w3-card-4 w3-animate-zoom">
+                                    <header class="w3-container w3-blue">
+                                        <span onclick="document.getElementById('id04').style.display='none'" class="w3-button w3-blue w3-xlarge w3-display-topright">&times;</span>
+                                        <h2 id="archive_title_modal" style="padding-top:1%;">Projekti</h2>
+                                    </header>
+                                    <div id="London" class="w3-container city">
+                                        <h1 id="archive_content_modal">Diçka shkoi keq.</h1>
+                                        <p id="archive_price_modal">Ju lutem provoni më vonë.</p>
+                                    </div>
+                                    <div class="w3-container w3-light-grey w3-padding">
+                                        <button class="w3-button w3-right w3-white w3-border" onclick="document.getElementById('id04').style.display='none'">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Javascript to switch between menus -->
-    <script type="text/javascript">
-        $('#switch-forms').on('click', function () {
-            $('#switch-forms').removeClass('active');
-            $(this).addClass('active');
-        });
-        $('#menu-contract').on('click', function () {
-            $('#add-contract').hide();
-            $('#modify-contract').hide();
-            $('#view-contract').show();
-        });
-        $('#menu-add').on('click', function () {
-            $('#view-contract').hide();
-            $('#modify-contract').hide();
-            $('#add-contract').show();
-        });
-        $('#menu-modify').on('click', function () {
-            $('#view-contract').hide();
-            $('#modify-contract').show();
-            $('#add-contract').hide();
-        });
-    </script>
-    <!-- Sets date placeholders with today's date -->
-    <script type="text/javascript">
-        var today = new Date();
-        var day = today.getDate();
-        var month = today.getMonth() + 1;
+            <!-- Javascript to switch between menus -->
+            <script type="text/javascript">
+                $('#switch-forms').on('click', function () {
+                    $('#switch-forms').removeClass('active');
+                    $(this).addClass('active');
+                });
+                $('#menu-contract').on('click', function () {
+                    $('#add-contract').hide();
+                    $('#modify-contract').hide();
+                    $('#view-contract').show();
+                    $('#view-archive').hide();
+                });
+                $('#menu-add').on('click', function () {
+                    $('#view-contract').hide();
+                    $('#modify-contract').hide();
+                    $('#add-contract').show();
+                    $('#view-archive').hide();
+                });
+                $('#menu-modify').on('click', function () {
+                    $('#view-contract').hide();
+                    $('#modify-contract').show();
+                    $('#add-contract').hide();
+                    $('#view-archive').hide();
+                });
+                $('#menu-archive').on('click', function () {
+                    $('#view-contract').hide();
+                    $('#modify-contract').hide();
+                    $('#add-contract').hide();
+                    $('#view-archive').show();
+                });
+            </script>
+            <!-- Sets date placeholders with today's date -->
+            <script type="text/javascript">
+                var today = new Date();
+                var day = today.getDate();
+                var month = today.getMonth() + 1;
 
-        var year = today.getFullYear();
-        if (day < 10) {
-            day = '0' + day;
-        }
-        if (month < 10) {
-            month = '0' + month;
-        }
-        var today = day + '.' + month + '.' + year;
-        document.getElementById("date_start").placeholder =
-            document.getElementById("date_publication").placeholder =
-            document.getElementById("date_signed").placeholder =
-            document.getElementById("imp_deadline_start").placeholder =
-            document.getElementById("imp_deadline_end").placeholder =
-            document.getElementById("conclusion_date").placeholder = today;
-    </script>
-
-    <script>
-        function ShowMenu(el) {
-            el.style.display = "block";
-        }
-        function HideMenu(el) {
-            el.style.display = "none";
-        }
-    </script>
-    <!-- Hides menus via hamburger menu click -->
-    <script type="text/javascript">
-        function MenuVisible() {
-            var x = ['menu-contract', 'menu-add', 'menu-archive', 'menu-modify'];
-            for (i = 0; i < x.length; i++) {
-                if (document.getElementById(x[i]).style.display === "none") {
-                    ShowMenu(document.getElementById(x[i]));
-                } else {
-                    HideMenu(document.getElementById(x[i]));
+                var year = today.getFullYear();
+                if (day < 10) {
+                    day = '0' + day;
                 }
-            }
-        }
-    </script>
+                if (month < 10) {
+                    month = '0' + month;
+                }
+                var today = day + '.' + month + '.' + year;
+                document.getElementById("date_start").placeholder =
+                    document.getElementById("date_publication").placeholder =
+                    document.getElementById("date_signed").placeholder =
+                    document.getElementById("imp_deadline_start").placeholder =
+                    document.getElementById("imp_deadline_end").placeholder =
+                    document.getElementById("conclusion_date").placeholder = today;
+            </script>
 
-    <!-- Fixes following bug: if hamburger menu is clicked and window is resized, the hamburger
+            <script>
+                function ShowMenu(el) {
+                    el.style.display = "block";
+                }
+                function HideMenu(el) {
+                    el.style.display = "none";
+                }
+            </script>
+            <!-- Hides menus via hamburger menu click -->
+            <script type="text/javascript">
+                function MenuVisible() {
+                    var x = ['menu-contract', 'menu-add', 'menu-archive', 'menu-modify'];
+                    for (i = 0; i < x.length; i++) {
+                        if (document.getElementById(x[i]).style.display === "none") {
+                            ShowMenu(document.getElementById(x[i]));
+                        } else {
+                            HideMenu(document.getElementById(x[i]));
+                        }
+                    }
+                }
+            </script>
+
+            <!-- Fixes following bug: if hamburger menu is clicked and window is resized, the hamburger
          menu disappear but the other menus stay non-visible when they actually need to be visible -->
-    <script>
-        window.onresize = function (event) {
-            var x = ['menu-contract', 'menu-add', 'menu-archive', 'menu-modify'];
-            for (i = 0; i < x.length; i++) {
-                ShowMenu(document.getElementById(x[i]));
-            }
-        };
-    </script>
+            <script>
+                window.onresize = function (event) {
+                    var x = ['menu-contract', 'menu-add', 'menu-archive', 'menu-modify'];
+                    for (i = 0; i < x.length; i++) {
+                        ShowMenu(document.getElementById(x[i]));
+                    }
+                };
+            </script>
 
-    <!-- hides menus at smaller screen on scroll, to get move view screen -->
-    <script>
-        $(".right-panel").on('scroll', function () {
-            var screenWidth = $(window).width();
-            if (screenWidth <= 768) { // if screen is that of a tablet or phone
-                var x = ['menu-contract', 'menu-add', 'menu-archive', 'menu-modify'];
-                for (i = 0; i < x.length; i++) {
-                    HideMenu(document.getElementById(x[i]));
+            <!-- hides menus at smaller screen on scroll, to get move view screen -->
+            <script>
+                $(".right-panel").on('scroll', function () {
+                    var screenWidth = $(window).width();
+                    if (screenWidth <= 768) { // if screen is that of a tablet or phone
+                        var x = ['menu-contract', 'menu-add', 'menu-archive', 'menu-modify'];
+                        for (i = 0; i < x.length; i++) {
+                            HideMenu(document.getElementById(x[i]));
+                        }
+                    }
+                });
+            </script>
+
+            <!-- Javascript function for view-modal -->
+            <script type="text/javascript">
+                function popup_view(id, type, price, content) {
+                    document.getElementById(id).style.display = 'block';
+                    document.getElementById('contract_title_modal').innerHTML = "Lloji:" + type;
+                    document.getElementById('contract_content_modal').innerHTML = content;
+                    document.getElementById('contract_price_modal').innerHTML = "Çmimi: " + price;
                 }
-            }
-        });
-    </script>
+            </script>
 
-    <!-- Javascript function for view-modal -->
-    <script type="text/javascript">
-        function popup(id, type, price, content) {
-            document.getElementById(id).style.display = 'block';
-            document.getElementById('contract_title_modal').innerHTML = "Lloji:" + type;
-            document.getElementById('contract_content_modal').innerHTML = content;
-            document.getElementById('contract_price_modal').innerHTML = "Çmimi: " + price;
-        }
-    </script>
-
-    <!-- Javascript function for edit-modal-form -->
-    <script type="text/javascript">
-        function popup_edit(id, hidden_id,contract_title, procurement_number, procurement_activity, date_start, date_publication, date_signed, imp_deadline_start, imp_deadline_end, conclusion_date, price, total_price, contractor_name) {
-            document.getElementById(id).style.display = 'block';
-            document.getElementById('edit_contract_title').value = contract_title;
-            document.getElementById('edit_hidden_id').value=hidden_id;
-            document.getElementById('edit_procurement_number').value = procurement_number;
-            document.getElementById('edit_procurement_activity').value = procurement_activity;
-            document.getElementById('edit_date_start').value = date_start;
-            document.getElementById('edit_date_publication').value = date_publication;
-            document.getElementById('edit_date_signed').value = date_signed;
-            document.getElementById('edit_imp_deadline_start').value = imp_deadline_start;
-            document.getElementById('edit_imp_deadline_end').value = imp_deadline_end;
-            document.getElementById('edit_conclusion_date').value = conclusion_date;
-            document.getElementById('edit_price').value = price;
-            document.getElementById('edit_total_price').value = total_price;
-            document.getElementById('edit_contractor_name').value = contractor_name;
-        }
-    </script>
-
-    <script type="text/javascript">
-        $(function () {
-            var inputmask = new Inputmask("###-##-###-#-#-#");
-            inputmask.mask($('[id*=procurement_number]'));
-            inputmask.mask($('[id*=edit_procurement_number]'));
-        });
-        $(function () {
-            var inputmask = new Inputmask("##.##.####");
-            inputmask.mask($('[id*=date_start]'));
-            inputmask.mask($('[id*=date_publication]'));
-            inputmask.mask($('[id*=date_signed]'));
-            inputmask.mask($('[id*=imp_deadline_start]'));
-            inputmask.mask($('[id*=imp_deadline_end]'));
-            inputmask.mask($('[id*=conclusion_date]'));
-        });
-
-        $(function () {
-            var requiredCheckboxes = $(':checkbox[required]');
-            requiredCheckboxes.change(function () {
-                if (requiredCheckboxes.is(':checked')) {
-                    requiredCheckboxes.removeAttr('required');
-                } else {
-                    requiredCheckboxes.attr('required', 'required');
+            <!-- Javascript function for edit-modal-form -->
+            <script type="text/javascript">
+                function popup_edit(id, hidden_id, contract_title, procurement_number, procurement_activity, date_start, date_publication, date_signed, imp_deadline_start, imp_deadline_end, conclusion_date, price, total_price, contractor_name) {
+                    document.getElementById(id).style.display = 'block';
+                    document.getElementById('edit_contract_title').value = contract_title;
+                    document.getElementById('edit_hidden_id').value = hidden_id;
+                    document.getElementById('edit_procurement_number').value = procurement_number;
+                    document.getElementById('edit_procurement_activity').value = procurement_activity;
+                    document.getElementById('edit_date_start').value = date_start;
+                    document.getElementById('edit_date_publication').value = date_publication;
+                    document.getElementById('edit_date_signed').value = date_signed;
+                    document.getElementById('edit_imp_deadline_start').value = imp_deadline_start;
+                    document.getElementById('edit_imp_deadline_end').value = imp_deadline_end;
+                    document.getElementById('edit_conclusion_date').value = conclusion_date;
+                    document.getElementById('edit_price').value = price;
+                    document.getElementById('edit_total_price').value = total_price;
+                    document.getElementById('edit_contractor_name').value = contractor_name;
                 }
-            });
-        });
+            </script>
 
-    </script>
+            <!-- Javascript function for view-modal -->
+            <script type="text/javascript">
+                function popup_delete(id, hidden_id) {
+                    document.getElementById(id).style.display = 'block';
+                    document.getElementById('delete_hidden_id').value = hidden_id;
+                    document.getElementById('archive_hidden_id').value = hidden_id;
+                }
+            </script>
+
+            <!--- Javascript function for view-archive -->
+            <script type="text/javascript">
+                function popup_archive(id, type, price, content) {
+                    document.getElementById(id).style.display = 'block';
+                    document.getElementById('archive_title_modal').innerHTML = "Lloji:" + type;
+                    document.getElementById('archive_content_modal').innerHTML = content;
+                    document.getElementById('archive_price_modal').innerHTML = "Çmimi: " + price;
+                }
+            </script>
+
+            <script type="text/javascript">
+                $(function () {
+                    var inputmask = new Inputmask("###-##-###-#-#-#");
+                    inputmask.mask($('[id*=procurement_number]'));
+                    inputmask.mask($('[id*=edit_procurement_number]'));
+                });
+                $(function () {
+                    var inputmask = new Inputmask("##.##.####");
+                    inputmask.mask($('[id*=date_start]'));
+                    inputmask.mask($('[id*=date_publication]'));
+                    inputmask.mask($('[id*=date_signed]'));
+                    inputmask.mask($('[id*=imp_deadline_start]'));
+                    inputmask.mask($('[id*=imp_deadline_end]'));
+                    inputmask.mask($('[id*=conclusion_date]'));
+                });
+
+                $(function () {
+                    var requiredCheckboxes = $(':checkbox[required]');
+                    requiredCheckboxes.change(function () {
+                        if (requiredCheckboxes.is(':checked')) {
+                            requiredCheckboxes.removeAttr('required');
+                        } else {
+                            requiredCheckboxes.attr('required', 'required');
+                        }
+                    });
+                });
+
+            </script>
 </body>
