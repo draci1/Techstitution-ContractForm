@@ -322,7 +322,7 @@
                                                     <%= doc.contractor_name %>
                                                 </td>
                                                 <td style="text-align:center;" class="edit_button" id="<%= doc._id %>" data-toggle='modal.$rowid_projec' data-target="#myModal$row[id_project]"
-                                                    onclick="popup_edit('id02','<%= doc._id %>','<%= doc.contract_title %>','<%= doc.procurement_number %>','<%= doc.procurement_activity %>','<%= doc.date_start %>','<%= doc.date_publication %>','<%= doc.date_signed %>','<%= doc.imp_deadline_start %>','<%= doc.imp_deadline_end %>','<%= doc.conclusion_date %>','<%= doc.price %>','<%= doc.total_price %>','<%= doc.contractor_name %>')">
+                                                    onclick="popup_edit('id02','<%= doc._id %>','<%= doc.contract_title %>','<%= doc.procurement_number %>', '<%= doc.procurement_type %>','<%= doc.procurement_activity %>','<%= doc.date_start %>','<%= doc.date_publication %>','<%= doc.date_signed %>','<%= doc.imp_deadline_start %>','<%= doc.imp_deadline_end %>','<%= doc.conclusion_date %>','<%= doc.price %>','<%= doc.total_price %>','<%= doc.contractor_name %>')">
                                                     <i class="fa fa-edit"></i>
                                                 </td>
                                                 <td style="text-align:center;" onclick="popup_delete('id03','<%= doc._id %>')">
@@ -758,12 +758,13 @@
 
             <!-- Javascript function for edit-modal-form -->
             <script type="text/javascript">
-                function popup_edit(id, hidden_id, contract_title, procurement_number, procurement_activity, date_start, date_publication, date_signed, imp_deadline_start, imp_deadline_end, conclusion_date, price, total_price, contractor_name) {
+                function popup_edit(id, hidden_id, contract_title, procurement_number, procurement_type, procurement_activity, date_start, date_publication, date_signed, imp_deadline_start, imp_deadline_end, conclusion_date, price, total_price, contractor_name) {
                     document.getElementById(id).style.display = 'block';
                     document.getElementById('edit_contract_title').value = contract_title;
                     document.getElementById('edit_hidden_id').value = hidden_id;
                     document.getElementById('edit_procurement_number').value = procurement_number;
                     document.getElementById('edit_procurement_activity').value = procurement_activity;
+                    document.getElementById('edit_procurement_type').value = procurement_type
                     document.getElementById('edit_date_start').value = date_start;
                     document.getElementById('edit_date_publication').value = date_publication;
                     document.getElementById('edit_date_signed').value = date_signed;

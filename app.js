@@ -40,24 +40,24 @@ app.post('/create', function (req, res, next) {
         if (err) { throw err; }
         var collection = db.collection('contracts');
         var contract = {
-            contract_title: req.body.contract_title,
+            contract_title: req.body.contract_title.trim(),
             contract_language: {
                 albanian: req.body.language1,
                 english: req.body.language2,
                 serbian: req.body.language3
             },
-            procurement_number: req.body.procurement_number,
-            procurement_type: req.body.procurement_type,
-            procurement_activity: req.body.procurement_activity,
-            date_start: req.body.date_start,
-            date_publication: req.body.date_publication,
-            date_signed: req.body.date_signed,
-            imp_deadline_start: req.body.imp_deadline_start,
-            imp_deadline_end: req.body.imp_deadline_end,
-            conclusion_date: req.body.conclusion_date,
-            price: req.body.price,
-            total_price: req.body.total_price,
-            contractor_name: req.body.contractor_name
+            procurement_number: req.body.procurement_number.trim(),
+            procurement_type: req.body.procurement_type.trim(),
+            procurement_activity: req.body.procurement_activity.trim(),
+            date_start: req.body.date_start.trim(),
+            date_publication: req.body.date_publication.trim(),
+            date_signed: req.body.date_signed.trim(),
+            imp_deadline_start: req.body.imp_deadline_start.trim(),
+            imp_deadline_end: req.body.imp_deadline_end.trim(),
+            conclusion_date: req.body.conclusion_date.trim(),
+            price: req.body.price.trim(),
+            total_price: req.body.total_price.trim(),
+            contractor_name: req.body.contractor_name.trim()
         };
         collection.insert(contract, function (err, result) {
             if (err) { throw err; }
@@ -75,26 +75,25 @@ app.post('/edit', function (req, res, next) {
         var newval = {
             $set:
                 {
-                    'contract_title': req.body.edit_contract_title,
+                    'contract_title': req.body.edit_contract_title.trim(),
                     'contract_language': {
                         'albanian': req.body.edit_language1,
                         'english': req.body.edit_language2,
                         'serbian': req.body.edit_language3
                     },
-                    'procurement_number': req.body.edit_procurement_number,
-                    'procurement_activity': req.body.edit_procurement_activity,
-                    'date_start': req.body.edit_date_start,
-                    'date_publication': req.body.edit_date_publication,
-                    'date_signed': req.body.edit_date_signed,
-                    'imp_deadline_start': req.body.edit_imp_deadline_start,
-                    'imp_deadline_end': req.body.edit_imp_deadline_end,
-                    'conclusion_date': req.body.edit_conclusion_date,
-                    'price': req.body.edit_price,
-                    'total_price': req.body.edit_total_price,
-                    'contractor_name': req.body.edit_contractor_name
+                    'procurement_number': req.body.edit_procurement_number.trim(),
+                    'procurement_activity': req.body.edit_procurement_activity.trim(),
+                    'date_start': req.body.edit_date_start.trim(),
+                    'date_publication': req.body.edit_date_publication.trim(),
+                    'date_signed': req.body.edit_date_signed.trim(),
+                    'imp_deadline_start': req.body.edit_imp_deadline_start.trim(),
+                    'imp_deadline_end': req.body.edit_imp_deadline_end.trim(),
+                    'conclusion_date': req.body.edit_conclusion_date.trim(),
+                    'price': req.body.edit_price.trim(),
+                    'total_price': req.body.edit_total_price.trim(),
+                    'contractor_name': req.body.edit_contractor_name.trim()
                 }
         };
-        console.log(newval);
         collection.updateOne(query, newval, function (err, result) {
             if (err) throw err;
             db.close();
