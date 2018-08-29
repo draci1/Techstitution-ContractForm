@@ -35,7 +35,7 @@ npm install --save body-parser
   1. Create a folder **data** in the C: drive
   2. Inside the folder 'data', create a folder named **db**
   3. Open Terminal (Or PowerShell in Windows), and type **mongod** to start MongoDB
-  4. Inside the Techstitution-ContractForm folder (which you have cloned from GitHub), open Git Bash and type **touch app.js**
+  4. Inside the Techstitution-ContractForm folder (which you have cloned from GitHub), open Git Bash and type **node app.js**
   5. Open a web browser and search for **localhost:3000**
   6. Enjoy the web app :) 
 
